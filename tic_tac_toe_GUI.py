@@ -73,6 +73,13 @@ def computer_move():
             corners = [(0, 0), (0, 2), (2, 0), (2, 2)]
             av_corners = [pos for pos in corners if pos in empty]
             move = choice(av_corners) if av_corners else choice(empty)
+    if (grid[0][0] == symbol and grid[2][2] == symbol) or (grid[2][0] == symbol and grid[0][2] == symbol):
+        is_second_move = True
+        for r, c in [(0, 1), (1, 0), (1, 2), (2, 1)]:
+            if grid[r][c] != "":
+                is_second_move = False
+        if is_second_move:
+            move = choice([(0, 1), (1, 0), (1, 2), (2, 1)])
 
     i, j = move
     grid[i][j] = bot_symbol

@@ -81,6 +81,20 @@ def computer_move():
         if is_second_move:
             move = choice([(0, 1), (1, 0), (1, 2), (2, 1)])
 
+    else:
+        if grid[1][0] == symbol and grid[2][1] == symbol:
+            if grid[2][0] == "":
+                move = (2, 0)
+        elif grid[1][0] == symbol and grid[0][1] == symbol:
+            if grid[0][0] == "":
+                move = (0, 0)
+        elif grid[1][2] == symbol and grid[2][1] == symbol:
+            if grid[2][2] == '':
+                move = (2, 2)
+        elif grid[1][2] == symbol and grid[0][1] == symbol:
+            if grid[0][2] == '':
+                move = (0, 2)
+
     i, j = move
     grid[i][j] = bot_symbol
     buttons[i][j]["text"] = bot_symbol
